@@ -1116,7 +1116,6 @@ variable "smb_csi_driver_helm_config" {
   default     = {}
 }
 
-
 #-----------Chaos Mesh ADDON-------------
 variable "enable_chaos_mesh" {
   description = "Enable Chaos Mesh add-on"
@@ -1152,6 +1151,19 @@ variable "enable_gatekeeper" {
 
 variable "gatekeeper_helm_config" {
   description = "Gatekeeper Helm Chart config"
+  type        = any
+  default     = {}
+}
+
+#-----------NVFlare-------------
+variable "enable_nvflare" {
+  description = "Enable NVFlare add-on"
+  type        = bool
+  default     = false
+}
+
+variable "nvflare_helm_config" {
+  description = "NVFlare helm chart config"
   type        = any
   default     = {}
 }
