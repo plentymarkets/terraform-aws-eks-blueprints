@@ -19,8 +19,9 @@ NVFlare is still under active development. Please check the [project](https://gi
 
 ```sh
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
-export AWS_REGION=us-west-2
-export TF_VAR_image_repository=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/nvflare
+export AWS_REGION=us-east-2
+export REPOSITORY_NAME=nvflare
+export TF_VAR_image_repository=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPOSITORY_NAME}
 export TF_VAR_image_tag=alpha1
 ```
 
@@ -33,7 +34,7 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 3. Create an ECR repository to store the container image that will be used to deploy NVFlare:
 
 ```sh
-aws ecr create-repository --repository-name $TF_VAR_image_repository --region $AWS_REGION
+aws ecr create-repository --repository-name $REPOSITORY_NAME --region $AWS_REGION
 ```
 
 4. Build, tag and push the image to the ECR repository created:
