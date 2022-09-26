@@ -31,10 +31,10 @@ variable "irsa_config" {
   description = "Input configuration for IRSA module"
   type = object({
     kubernetes_namespace              = string
-    create_kubernetes_namespace       = optional(bool)
+    create_kubernetes_namespace       = bool
     kubernetes_service_account        = string
-    create_kubernetes_service_account = optional(bool)
-    irsa_iam_policies                 = optional(list(string))
+    create_kubernetes_service_account = bool
+    irsa_iam_policies                 = list(string)
   })
   default = null
 }
@@ -51,7 +51,7 @@ variable "addon_context" {
     eks_oidc_issuer_url            = string
     eks_oidc_provider_arn          = string
     tags                           = map(string)
-    irsa_iam_role_path             = optional(string)
-    irsa_iam_permissions_boundary  = optional(string)
+    irsa_iam_role_path             = string
+    irsa_iam_permissions_boundary  = string
   })
 }
